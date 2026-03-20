@@ -60,8 +60,67 @@ canvas#bgc{position:fixed;inset:0;z-index:0;pointer-events:none}
 <div class="scr" id="s-lobby"><div class="lobw"><div class="bt" style="margin-bottom:10px">YEP Challenge</div><div class="lw2">WELCOME</div><div class="ltn" id="ltn"></div><div class="rl">THE JOURNEY AHEAD</div><div class="rg" id="rg"></div><div class="wb"><div class="pd"></div><span class="wt">Waiting for facilitator to launch...</span></div><button class="db" id="dbtn">▶ SIMULATE FACILITATOR START</button></div></div>
 <div class="scr" id="s-count"><div class="cn" id="cnum">5</div><div class="cl" id="clab">PREPARE YOUR TEAM</div></div>
 <div class="rs" id="s-round"><div class="tb"><div class="tbl"><span class="tbr" id="tb-r">ROUND 1 / 6</span><span class="tbd" id="tb-d">⚡ Intro</span></div><span class="tbt" id="tb-t"></span></div><div class="pw"><div class="pb" id="pbar" style="width:100%"></div></div><div class="sb" id="sbar"></div><div class="sl" id="slab"></div><div class="rco"><div class="rin" id="rcnt"></div></div><div class="bb"><button class="bn" id="bnxt">I'VE READ IT →</button></div></div>
-<div class="scr" id="s-comp"><div class="cw"><span class="cw-i">🎉</span><div class="cw-t" id="cw-t">ROUND 1 COMPLETE</div><div class="cw-s" id="cw-s">Great work! Your answers have been submitted.<br>Next up: peer review, then the next round.</div><div class="cs2"><div class="sb2"><div class="sb2-n" id="sc-m">0/5</div><div class="sb2-l">MCQ Score</div></div><div class="sb2"><div class="sb2-n">✓</div><div class="sb2-l">Short Answer</div></div><div class="sb2"><div class="sb2-n">✓</div><div class="sb2-l">Challenge</div></div></div><button class="bp" style="max-width:400px;margin:0 auto" id="bnr">PROCEED TO NEXT ROUND →</button></div></div>
-<div class="scr" id="s-final"><div class="cw"><span class="cw-i">🏆</span><div class="cw-t" style="color:var(--accent-bright)">ALL 6 ROUNDS COMPLETE!</div><div class="cw-s">Incredible work, team! You've completed all 6 rounds of the YEP Challenge.<br>Next: The Grand YEP Challenge — build your final pitch deck, business plan, or design.</div><button class="bp" style="max-width:400px;margin:0 auto" id="bgc2">PROCEED TO GRAND CHALLENGE →</button></div></div>
+<div class="scr" id="s-comp"><div class="cw"><span class="cw-i">🎉</span><div class="cw-t" id="cw-t">ROUND 1 COMPLETE</div><div class="cw-s" id="cw-s">Great work! Your answers have been submitted.<br>Next up: peer review, then the next round.</div><div class="cs2"><div class="sb2"><div class="sb2-n" id="sc-m">0/5</div><div class="sb2-l">MCQ Score</div></div><div class="sb2"><div class="sb2-n">✓</div><div class="sb2-l">Challenge</div></div></div><button class="bp" style="max-width:400px;margin:0 auto" id="bnr">PROCEED TO NEXT ROUND →</button></div></div>
+<div class="scr" id="s-final"><div class="cw"><span class="cw-i">🏆</span><div class="cw-t" style="color:var(--accent-bright)">ALL 6 ROUNDS COMPLETE!</div><div class="cw-s">Incredible work, team! You've completed all 6 rounds of the YEP Challenge.<br>Next: The Grand YEP Challenge — build and upload your final pitch deck.</div><button class="bp" style="max-width:400px;margin:0 auto" id="bgc2">PROCEED TO GRAND CHALLENGE →</button></div></div>
+<div class="scr" id="s-grand">
+  <div style="max-width:600px;width:100%;overflow-y:auto;padding:20px 0">
+    <div class="sh" style="text-align:center;margin-bottom:28px">
+      <div class="st2">The Grand YEP Challenge</div>
+      <div class="st3" style="font-size:32px;color:var(--accent-bright)">Build Your Startup Pitch</div>
+      <div class="st4" style="margin-top:8px">You've learned about entrepreneurship, startups, problem-solving, trial & error, finance, and marketing.<br>Now put it all together. Pitch ANY business idea.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <!-- Startup Name -->
+      <div class="cb" style="margin-bottom:0">
+        <div class="cb-t">1. Startup Name</div>
+        <input type="text" id="gc-name" placeholder="What's your startup called?" style="width:100%;padding:14px;font-size:14px;font-family:var(--font-b);background:var(--bg);border:1.5px solid var(--border);border-radius:8px;color:var(--white);outline:none;transition:all .3s;margin-top:8px" onfocus="this.style.borderColor='var(--accent)';this.style.boxShadow='0 0 0 3px var(--accent-glow)'" onblur="this.style.borderColor='var(--border)';this.style.boxShadow='none'" oninput="checkGrandForm()"/>
+      </div>
+      <!-- Logo Upload -->
+      <div class="cb" style="margin-bottom:0">
+        <div class="cb-t">2. Upload Your Logo</div>
+        <div class="st4" style="margin-bottom:8px">PNG, JPG, or SVG</div>
+        <div id="gc-logo-zone" style="border:2px dashed var(--border);border-radius:10px;padding:28px;text-align:center;cursor:pointer;transition:all .3s;position:relative" onclick="document.getElementById('gc-logo-input').click()">
+          <div id="gc-logo-preview" style="display:none;margin-bottom:8px"><img id="gc-logo-img" style="max-width:120px;max-height:120px;border-radius:8px" /></div>
+          <div id="gc-logo-text" style="color:var(--muted);font-size:13px">Click to upload logo image</div>
+          <input type="file" id="gc-logo-input" accept="image/*" style="display:none" onchange="handleLogoUpload(this)"/>
+        </div>
+      </div>
+      <!-- Elevator Pitch -->
+      <div class="cb" style="margin-bottom:0">
+        <div class="cb-t">3. Elevator Pitch</div>
+        <div class="st4" style="margin-bottom:8px">Sell your idea in 50 words or less</div>
+        <textarea class="sa-ta" id="gc-pitch" placeholder="In 50 words, convince someone your idea is worth investing in..." style="min-height:100px" oninput="updatePitchCount();checkGrandForm()"></textarea>
+        <div class="sa-wc"><span id="gc-pitch-wc">0</span> / 50 words</div>
+      </div>
+      <!-- Pitch Deck Upload -->
+      <div class="cb" style="margin-bottom:0">
+        <div class="cb-t">4. Upload Pitch Deck</div>
+        <div class="st4" style="margin-bottom:8px">PDF format only</div>
+        <div id="gc-deck-zone" style="border:2px dashed var(--border);border-radius:10px;padding:28px;text-align:center;cursor:pointer;transition:all .3s" onclick="document.getElementById('gc-deck-input').click()">
+          <div id="gc-deck-text" style="color:var(--muted);font-size:13px">Click to upload your pitch deck (PDF)</div>
+          <input type="file" id="gc-deck-input" accept=".pdf" style="display:none" onchange="handleDeckUpload(this)"/>
+        </div>
+      </div>
+    </div>
+    <button class="bp" style="margin-top:24px" id="gc-submit" disabled onclick="submitGrandChallenge()">SUBMIT GRAND CHALLENGE</button>
+  </div>
+</div>
+<div class="scr" id="s-submitted">
+  <div class="cw">
+    <span class="cw-i">🚀</span>
+    <div class="cw-t" style="color:var(--accent-bright)">GRAND CHALLENGE SUBMITTED!</div>
+    <div class="cw-s" id="gc-sub-msg">Your pitch deck has been submitted for review.<br>Get ready to present your startup to the panel!</div>
+    <div class="cs2">
+      <div class="sb2"><div class="sb2-n" id="gc-sub-name">—</div><div class="sb2-l">Startup</div></div>
+      <div class="sb2"><div class="sb2-n">✓</div><div class="sb2-l">Logo</div></div>
+      <div class="sb2"><div class="sb2-n">✓</div><div class="sb2-l">Pitch Deck</div></div>
+    </div>
+    <div class="cb" style="max-width:400px;margin:0 auto;text-align:left">
+      <div class="cb-t">Your Elevator Pitch</div>
+      <div class="cb-x" id="gc-sub-pitch" style="font-style:italic"></div>
+    </div>
+  </div>
+</div>
 <div class="ft">© Creya Learning and Research. All rights reserved.</div>
 <script>
 const ROUND_DATA = [
@@ -106,7 +165,7 @@ const ROUND_DATA = [
     ],
     shortQ:"Steve Jobs and Wozniak had very different skills that complemented each other. Describe how the different strengths within your team could complement each other to build a startup. What role would each person play and why? (100-150 words)",
     challengeTitle:"The Seesaw Challenge",
-    challengeDesc:"Pick 2 entrepreneurs you admire (other than Steve Jobs). Compare their journeys:\n\n1. Three common traits they share\n2. How their innovations impacted society\n3. Key factors behind their success\n4. Why they inspire your team\n\nWrite 200-300 words with specific examples."
+    challengeDesc:"Pick 2 entrepreneurs you admire (other than Steve Jobs). Compare their journeys: what 3 traits do they share? How did they impact society?\n\nNow look at your own team — how do your different strengths complement each other the way Jobs and Wozniak did? If your team were starting a venture together, who would play what role and why?\n\nWrite 150-200 words."
   },
   // ROUND 2: Paytm - The Start-Up
   {
@@ -147,7 +206,7 @@ const ROUND_DATA = [
     ],
     shortQ:"Think about a problem you see in your school or community that could be solved with a startup. What assumptions would you need to test before building the solution? (100-150 words)",
     challengeTitle:"Assumptions Mapping Challenge",
-    challengeDesc:"As a team, come up with a startup idea that solves a problem in your school environment.\n\n1. Identify the problem clearly\n2. List 3 assumptions your idea is based on\n3. How would you test each assumption?\n4. How would you collect feedback from potential users (students)?\n5. What challenges might you face?\n\nWrite 200-300 words."
+    challengeDesc:"Identify ONE real problem in your school or community that could be solved by a startup. Describe the problem and who it affects.\n\nThen think like a founder: what are 3 assumptions your idea is based on? How would you test each assumption cheaply and quickly? What would success look like after 1 month?\n\nWrite 150-200 words."
   },
   // ROUND 3: Pinterest + McDonald's - Problem & Solution
   {
@@ -189,7 +248,7 @@ const ROUND_DATA = [
     ],
     shortQ:"Think of a real problem in your daily life (at school, home, or community). Walk through the 5 stages of Design Thinking to propose a solution. (100-150 words)",
     challengeTitle:"Problem-Solution Sprint",
-    challengeDesc:"Your team has identified a problem in your school. Apply Design Thinking:\n\n1. Empathise: Who is affected? What do they feel?\n2. Define: Write a clear problem statement\n3. Ideate: List 3 possible solutions\n4. Prototype: Describe a simple, low-cost version to test\n5. Test: How would you measure if it works?\n\nBe specific and creative. Write 200-300 words."
+    challengeDesc:"Pick a real problem in your school (canteen queues, lost items, communication gaps). Apply the full Design Thinking process:\n\nEmpathise — who is affected and how?\nDefine — write a clear problem statement.\nIdeate — list 3 possible solutions.\nPrototype — describe what a simple, cheap test version would look like.\nHow would you measure if it works?\n\nWrite 150-200 words."
   },
   // ROUND 4: James Dyson - Trial and Error
   {
@@ -231,7 +290,7 @@ const ROUND_DATA = [
     ],
     shortQ:"Think about a time you failed at something. How did that failure help you improve or find a better approach? Connect this to the entrepreneurial mindset of 'fail early, cheaply, and often.' (100-150 words)",
     challengeTitle:"Prototyping Sprint",
-    challengeDesc:"Your team has a startup idea. Now prototype it:\n\n1. Describe your product/service in 2 sentences\n2. What is the simplest, cheapest version you could build to test it?\n3. Who would you test it with? (your target users)\n4. What 3 questions would you ask testers?\n5. Based on likely feedback, what would you change in version 2?\n\nThink like Dyson — iterate fast. Write 200-300 words."
+    challengeDesc:"Your team is launching a new product or service for students. Describe the idea in 2 sentences.\n\nNow apply the 'fail early, cheaply, and often' approach: design a simple prototype, describe how you'd test it with 10 users, list 3 feedback questions you'd ask, and based on imagined feedback, describe how Version 2.0 would be different.\n\nWrite 150-200 words."
   },
   // ROUND 5: Eric Yuan / Zoom - Money Matters
   {
@@ -273,7 +332,7 @@ const ROUND_DATA = [
     ],
     shortQ:"If you were starting a food delivery app for your school, list all the startup costs you can think of. Categorise them into Expenses vs Assets. Estimate a rough total. (100-150 words)",
     challengeTitle:"Funding Strategy Challenge",
-    challengeDesc:"Your startup needs ₹5 lakhs to launch. Create a funding plan:\n\n1. Describe your startup in 2 lines\n2. Break down how you'd spend the ₹5 lakhs (list categories)\n3. Choose 2 funding sources and justify why\n4. Would you prefer dilutive or non-dilutive funding? Why?\n5. What is your plan to become profitable?\n\nShow your financial thinking. Write 200-300 words."
+    challengeDesc:"Your team is starting a small business at school (food stall, tutoring service, or handmade products). Create a mini startup cost plan:\n\nName your business, list 5 specific expenses with estimated amounts, calculate the total startup cost, choose a funding strategy (savings, crowdfunding, loan, investor?) and explain why. How will you price your product to make this money back?\n\nWrite 150-200 words."
   },
   // ROUND 6: Coca-Cola - Marketing
   {
@@ -316,14 +375,14 @@ const ROUND_DATA = [
     ],
     shortQ:"Choose a product you use daily (a snack, app, or clothing brand). Analyse its marketing using the 4 P's framework: What is the Product? How is it Priced? Where is it available (Place)? How is it Promoted? (100-150 words)",
     challengeTitle:"Marketing Campaign Challenge",
-    challengeDesc:"Your team is launching a new healthy energy drink for teenagers. Create a marketing plan:\n\n1. Product: Name it and describe the packaging\n2. Price: What would you charge and why?\n3. Place: Where would you sell it? (online, stores, schools?)\n4. Promotion: Design a campaign — describe one social media post, one slogan, and one creative marketing idea\n5. What makes your approach different from existing energy drinks?\n\nBe creative and specific. Write 200-300 words."
+    challengeDesc:"Your team is launching a marketing campaign for a startup idea. Describe your product in one compelling sentence.\n\nThen build a campaign: who is your target customer? Design a poster concept and a social media strategy in 2-3 lines each. Create a catchy tagline. If you had ₹10,000 to spend on marketing, how would you allocate it? Finally, write your elevator pitch in under 50 words.\n\nWrite 150-200 words."
   }
 ];
 
 const TEAMS={"YEP-ALPHA-2026":"Team Alpha","YEP-BETA-2026":"Team Beta","YEP-GAMMA-2026":"Team Gamma","YEP-DELTA-2026":"Team Delta"};
 const RULES=[{icon:"🎯",title:"6 Rounds",desc:"Each round: a new entrepreneur story & business concept"},{icon:"📝",title:"Solve It",desc:"MCQs, short answers, and a hands-on mini challenge"},{icon:"👀",title:"Review Peers",desc:"Evaluate another team's work between rounds"},{icon:"🏆",title:"Grand Challenge",desc:"Build your final pitch deck, plan, or design"},{icon:"💻",title:"Team Mode",desc:"One screen, one team — discuss, debate, decide"},{icon:"⏱️",title:"Beat the Clock",desc:"Every round is timed. Speed meets strategy"}];
-const STEPS=["The Story","Questions","Short Answer","Challenge"];
-let team="",curRound=0,step=0,mcqAns=[],saText="",chText="",timerIv=null;
+const STEPS=["The Story","Questions","Challenge"];
+let team="",curRound=0,step=0,mcqAns=[],chText="",timerIv=null;
 const $=id=>document.getElementById(id);
 function go(a,b,cb){a.classList.remove("on");a.classList.add("off");setTimeout(()=>{a.classList.remove("off");b.classList.add("on");if(cb)cb()},400)}
 
@@ -338,7 +397,7 @@ $("jb").onclick=handleJoin;$("ti").onkeydown=e=>{if(e.key==="Enter")handleJoin()
 $("dbtn").onclick=()=>{let c=5;go($("s-lobby"),$("s-count"),()=>{$("cnum").textContent=c;const iv=setInterval(()=>{c--;if(c<=0){clearInterval(iv);$("cnum").textContent="GO";$("cnum").style.animation="none";void $("cnum").offsetWidth;$("cnum").style.animation="cpop .6s cubic-bezier(.16,1,.3,1)";$("clab").textContent="LET'S BUILD!";setTimeout(()=>{curRound=0;go($("s-count"),$("s-round"),startRound)},900)}else{$("cnum").textContent=c;$("cnum").style.animation="none";void $("cnum").offsetWidth;$("cnum").style.animation="cpop .6s cubic-bezier(.16,1,.3,1)"}},1000)})};
 
 function startRound(){
-  const rd=ROUND_DATA[curRound];step=0;mcqAns=rd.mcqs.map(()=>-1);saText="";chText="";
+  const rd=ROUND_DATA[curRound];step=0;mcqAns=rd.mcqs.map(()=>-1);chText="";
   $("tb-r").textContent="ROUND "+rd.num+" / "+rd.total;
   $("tb-d").textContent=rd.domainIcon+" "+rd.domain;
   renderDots();renderStep();startTimer();
@@ -350,7 +409,7 @@ function renderDots(){
 function startTimer(){if(timerIv)clearInterval(timerIv);const total=720;let el=0;const bar=$("pbar");bar.style.width="100%";bar.className="pb";timerIv=setInterval(()=>{el++;const pct=Math.max(0,((total-el)/total)*100);bar.style.width=pct+"%";bar.className="pb"+(pct<15?" danger":pct<35?" warn":"");if(el>=total)clearInterval(timerIv)},1000)}
 
 function renderStep(){const c=$("rcnt"),btn=$("bnxt");c.scrollTop=0;const rd=ROUND_DATA[curRound];
-  if(step===0)renderStory(c,btn,rd);else if(step===1)renderMCQ(c,btn,rd);else if(step===2)renderSA(c,btn,rd);else if(step===3)renderCh(c,btn,rd);renderDots();}
+  if(step===0)renderStory(c,btn,rd);else if(step===1)renderMCQ(c,btn,rd);else if(step===2)renderCh(c,btn,rd);renderDots();}
 
 function renderStory(c,btn,rd){
   btn.textContent="I'VE READ IT →";btn.disabled=false;btn.onclick=()=>{step=1;renderStep()};
@@ -363,21 +422,15 @@ function renderStory(c,btn,rd){
 function renderMCQ(c,btn,rd){
   btn.textContent="SUBMIT ANSWERS →";btn.disabled=true;btn.onclick=()=>{step=2;renderStep()};
   const L=["A","B","C","D"];
-  let h=`<div class="sh"><div class="st2">Step 2 of 4</div><div class="st3">Test Your Understanding</div><div class="st4">Answer all ${rd.mcqs.length} questions.</div></div>`;
+  let h=`<div class="sh"><div class="st2">Step 2 of 3</div><div class="st3">Test Your Understanding</div><div class="st4">Answer all ${rd.mcqs.length} questions.</div></div>`;
   rd.mcqs.forEach((m,qi)=>{h+=`<div class="mb"><div class="mq-n">Question ${qi+1} of ${rd.mcqs.length}</div><div class="mq-q">${m.q}</div><div class="mq-os">`;m.opts.forEach((o,oi)=>{h+=`<div class="mq-o${mcqAns[qi]===oi?" sel":""}" data-q="${qi}" data-o="${oi}"><span class="ol">${L[oi]}</span><span>${o}</span></div>`});h+=`</div></div>`});
   c.innerHTML=h;
   c.querySelectorAll(".mq-o").forEach(el=>{el.onclick=()=>{const qi=+el.dataset.q,oi=+el.dataset.o;mcqAns[qi]=oi;c.querySelectorAll(`.mq-o[data-q="${qi}"]`).forEach(e=>e.classList.remove("sel"));el.classList.add("sel");btn.disabled=mcqAns.includes(-1)}});
 }
 
-function renderSA(c,btn,rd){
-  btn.textContent="SUBMIT RESPONSE →";btn.disabled=!saText.trim();btn.onclick=()=>{step=3;renderStep()};
-  c.innerHTML=`<div class="sh"><div class="st2">Step 3 of 4</div><div class="st3">Short Answer</div><div class="st4">Discuss as a team, then write together.</div></div><div class="sa-q">${rd.shortQ}</div><textarea class="sa-ta" id="sata" placeholder="Write your team's response...">${saText}</textarea><div class="sa-wc"><span id="sawc">0</span> words</div>`;
-  const ta=$("sata");function u(){saText=ta.value;const w=ta.value.trim()?ta.value.trim().split(/\s+/).length:0;$("sawc").textContent=w;btn.disabled=w<20}ta.oninput=u;u();
-}
-
 function renderCh(c,btn,rd){
   btn.textContent="COMPLETE ROUND →";btn.disabled=!chText.trim();btn.onclick=()=>{clearInterval(timerIv);completeRound()};
-  c.innerHTML=`<div class="sh"><div class="st2">Step 4 of 4</div><div class="st3">${rd.challengeTitle}</div><div class="st4">This is the peer-reviewed challenge. Put your best thinking forward.</div></div><div class="cb-x" style="white-space:pre-line;margin-bottom:16px">${rd.challengeDesc}</div><textarea class="sa-ta" id="chta" placeholder="Write your team's analysis...">${chText}</textarea><div class="sa-wc"><span id="chwc">0</span> words</div>`;
+  c.innerHTML=`<div class="sh"><div class="st2">Step 3 of 3</div><div class="st3">${rd.challengeTitle}</div><div class="st4">This is the peer-reviewed challenge. Put your best thinking forward.</div></div><div class="cb-x" style="white-space:pre-line;margin-bottom:16px">${rd.challengeDesc}</div><textarea class="sa-ta" id="chta" placeholder="Write your team's analysis...">${chText}</textarea><div class="sa-wc"><span id="chwc">0</span> words</div>`;
   const ta=$("chta");function u(){chText=ta.value;const w=ta.value.trim()?ta.value.trim().split(/\s+/).length:0;$("chwc").textContent=w;btn.disabled=w<30}ta.oninput=u;u();
 }
 
@@ -389,7 +442,45 @@ function completeRound(){
   else{$("cw-s").innerHTML="All 6 rounds complete! Incredible work, team.";$("bnr").textContent="VIEW FINAL RESULTS →";$("bnr").onclick=()=>{go($("s-comp"),$("s-final"))}}
   go($("s-round"),$("s-comp"));
 }
-$("bgc2").onclick=()=>{alert("Grand YEP Challenge screen coming next! Teams will choose deliverables and build their final pitch.")};
+$("bgc2").onclick=()=>{go($("s-final"),$("s-grand"))};
+
+// Grand Challenge functions
+let gcLogoFile=null,gcDeckFile=null;
+
+function handleLogoUpload(input){
+  if(input.files&&input.files[0]){
+    gcLogoFile=input.files[0];
+    const reader=new FileReader();
+    reader.onload=e=>{$("gc-logo-img").src=e.target.result;$("gc-logo-preview").style.display="block";$("gc-logo-text").textContent=gcLogoFile.name;$("gc-logo-zone").style.borderColor="var(--green)"};
+    reader.readAsDataURL(gcLogoFile);checkGrandForm();
+  }
+}
+function handleDeckUpload(input){
+  if(input.files&&input.files[0]){
+    gcDeckFile=input.files[0];
+    $("gc-deck-text").textContent="✓ "+gcDeckFile.name;$("gc-deck-zone").style.borderColor="var(--green)";checkGrandForm();
+  }
+}
+function updatePitchCount(){
+  const v=$("gc-pitch").value.trim();const w=v?v.split(/\s+/).length:0;
+  $("gc-pitch-wc").textContent=w;
+  $("gc-pitch-wc").style.color=w>50?"var(--red)":"var(--muted)";
+}
+function checkGrandForm(){
+  const name=$("gc-name").value.trim();
+  const pitch=$("gc-pitch").value.trim();
+  const pitchWords=pitch?pitch.split(/\s+/).length:0;
+  const ready=name&&gcLogoFile&&pitch&&pitchWords<=50&&gcDeckFile;
+  $("gc-submit").disabled=!ready;
+}
+function submitGrandChallenge(){
+  const name=$("gc-name").value.trim();
+  const pitch=$("gc-pitch").value.trim();
+  $("gc-sub-name").textContent=name;
+  $("gc-sub-pitch").textContent='"'+pitch+'"';
+  $("gc-sub-msg").innerHTML=team+" — your pitch for <strong>"+name+"</strong> has been submitted!<br>Get ready to present your startup to the panel!";
+  go($("s-grand"),$("s-submitted"));
+}
 
 // BG Canvas
 (function(){const cv=$("bgc"),ctx=cv.getContext("2d");let sh=[],t=0;function re(){cv.width=innerWidth;cv.height=innerHeight}re();addEventListener("resize",re);const p=[{f:"rgba(155,122,255,.02)",s:"rgba(155,122,255,.04)"},{f:"rgba(110,231,192,.015)",s:"rgba(110,231,192,.03)"}];for(let i=0;i<10;i++){const c=p[i%p.length];sh.push({x:Math.random()*cv.width,y:Math.random()*cv.height,sz:25+Math.random()*60,rot:Math.random()*Math.PI*2,rs:(Math.random()-.5)*.001,dx:(Math.random()-.5)*.08,dy:(Math.random()-.5)*.08,type:Math.floor(Math.random()*4),phase:Math.random()*Math.PI*2,...c})}function dr(){t+=.016;ctx.clearRect(0,0,cv.width,cv.height);sh.forEach(s=>{s.x+=s.dx;s.y+=s.dy;s.rot+=s.rs;if(s.x<-s.sz)s.x=cv.width+s.sz;if(s.x>cv.width+s.sz)s.x=-s.sz;if(s.y<-s.sz)s.y=cv.height+s.sz;if(s.y>cv.height+s.sz)s.y=-s.sz;const p2=1+Math.sin(t*.3+s.phase)*.04,sz=s.sz*p2;ctx.save();ctx.translate(s.x,s.y);ctx.rotate(s.rot);ctx.beginPath();if(s.type===0)ctx.arc(0,0,sz/2,0,Math.PI*2);else if(s.type===1){for(let j=0;j<3;j++){const a=(j*2*Math.PI)/3-Math.PI/2;j===0?ctx.moveTo(Math.cos(a)*sz/2,Math.sin(a)*sz/2):ctx.lineTo(Math.cos(a)*sz/2,Math.sin(a)*sz/2)}ctx.closePath()}else if(s.type===2){for(let j=0;j<6;j++){const a=(j*2*Math.PI)/6-Math.PI/6;j===0?ctx.moveTo(Math.cos(a)*sz/2,Math.sin(a)*sz/2):ctx.lineTo(Math.cos(a)*sz/2,Math.sin(a)*sz/2)}ctx.closePath()}else{ctx.moveTo(0,-sz/2);ctx.lineTo(sz/2.5,0);ctx.lineTo(0,sz/2);ctx.lineTo(-sz/2.5,0);ctx.closePath()}ctx.fillStyle=s.f;ctx.fill();ctx.strokeStyle=s.s;ctx.lineWidth=.7;ctx.stroke();ctx.restore()});requestAnimationFrame(dr)}dr()})();
